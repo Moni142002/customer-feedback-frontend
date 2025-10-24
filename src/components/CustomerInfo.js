@@ -1,35 +1,41 @@
 ﻿import React from "react";
-import { TextField, Box, Typography } from "@mui/material";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const CustomerInfo = () => {
   return (
-    <Box>
-      <Typography variant="h6" gutterBottom>
-        Customer Information
-      </Typography>
+    <div className="container-fluid">
+      <h4 className="mb-4 text-primary">Customer Information</h4>
       
-      <TextField
-        fullWidth
-        label="Full Name"
-        margin="normal"
-        required
-      />
+      <div className="mb-3">
+        <label className="form-label">Full Name <span className="text-danger">*</span></label>
+        <input 
+          type="text" 
+          className="form-control" 
+          placeholder="Enter your full name" 
+          required 
+        />
+      </div>
       
-      <TextField
-        fullWidth
-        label="Email Address"
-        type="email"
-        margin="normal"
-        required
-      />
+      <div className="mb-3">
+        <label className="form-label">Email Address <span className="text-danger">*</span></label>
+        <input 
+          type="email" 
+          className="form-control" 
+          placeholder="Enter your email address" 
+          required 
+        />
+      </div>
       
-      <TextField
-        fullWidth
-        label="Phone Number"
-        margin="normal"
-        required
-      />
-    </Box>
+      <div className="mb-3">
+        <label className="form-label">Phone Number <span className="text-danger">*</span></label>
+        <input 
+          type="tel" 
+          className="form-control" 
+          placeholder="Enter your phone number" 
+          required 
+        />
+      </div>
+    </div>
   );
 };
 

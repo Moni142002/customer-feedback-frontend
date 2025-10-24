@@ -1,32 +1,60 @@
-﻿import React from "react";
-import { Box, Typography, Button, Paper } from "@mui/material";
+﻿import React, { useRef } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const SignaturePad = () => {
+  const canvasRef = useRef(null);
+
+  const clearSignature = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  };
+
   return (
-    <Box>
-      <Typography variant="h6" gutterBottom>
-        Signature
-      </Typography>
+    <div className="container-fluid">
+      <h4 className="mb-4 text-primary">Signature</h4>
       
-      <Typography variant="body2" color="textSecondary" gutterBottom>
-        Please sign in the box below
-      </Typography>
+      <p className="text-muted mb-3">
+        Please sign in the box below using your finger or stylus
+      </p>
 
-      <Paper variant="outlined" sx={{ height: 200, mb: 2, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Typography color="textSecondary">
-          Signature Area - Would use react-signature-canvas in full version
-        </Typography>
-      </Paper>
+      <div className="border rounded mb-3" style={{ height: '200px', background: '#f8f9fa' }}>
+        <canvas 
+          ref={canvasRef}
+          width="500" 
+          height="200"
+          className="w-100 h-100"
+          style={{ cursor: 'crosshair' }}
+          onMouseDown={(e) => {
+            // Basic drawing functionality would go here
+            console.log('Drawing started at:', e.clientX, e.clientY);
+          }}
+        />
+      </div>
 
-      <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
-        <Button variant="outlined">Clear Signature</Button>
-        <Button variant="contained">Save Signature</Button>
-      </Box>
+      <div className="d-flex gap-2 mb-4">
+        <button 
+          type="button" 
+          className="btn btn-outline-secondary"
+          onClick={clearSignature}
+        >
+          Clear Signature
+        </button>
+        <button 
+          type="button" 
+          className="btn btn-primary"
+        >
+          Save Signature
+        </button>
+      </div>
 
-      <Button variant="contained" color="primary" size="large" fullWidth>
+      <button 
+        type="button" 
+        className="btn btn-success btn-lg w-100"
+      >
         Submit Feedback
-      </Button>
-    </Box>
+      </button>
+    </div>
   );
 };
 

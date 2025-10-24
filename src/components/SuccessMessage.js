@@ -1,28 +1,39 @@
 ﻿import React from "react";
-import { Box, Typography, Button } from "@mui/material";
-import { CheckCircle } from "@mui/icons-material";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const SuccessMessage = ({ onReset }) => {
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" minHeight="400px">
-      <CheckCircle sx={{ fontSize: 80, color: "success.main", mb: 2 }} />
-      
-      <Typography variant="h4" component="h2" gutterBottom color="success.main">
-        Thank You!
-      </Typography>
-      
-      <Typography variant="h6" component="p" gutterBottom align="center">
-        Your feedback has been submitted successfully.
-      </Typography>
-      
-      <Typography variant="body1" color="textSecondary" align="center" sx={{ mb: 4 }}>
-        We appreciate you taking the time to share your experience with us.
-      </Typography>
-      
-      <Button variant="contained" color="primary" size="large" onClick={onReset}>
-        Submit Another Feedback
-      </Button>
-    </Box>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-8 text-center">
+          <div className="card border-0 shadow">
+            <div className="card-body py-5">
+              <div className="text-success mb-3">
+                <i className="bi bi-check-circle-fill" style={{ fontSize: '4rem' }}></i>
+              </div>
+              
+              <h2 className="card-title text-success mb-3">Thank You!</h2>
+              
+              <h5 className="card-subtitle mb-3">
+                Your feedback has been submitted successfully.
+              </h5>
+              
+              <p className="card-text text-muted mb-4">
+                We appreciate you taking the time to share your experience with us. 
+                Your feedback helps us improve our services.
+              </p>
+              
+              <button 
+                className="btn btn-primary btn-lg"
+                onClick={onReset}
+              >
+                Submit Another Feedback
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

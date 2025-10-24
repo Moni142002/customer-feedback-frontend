@@ -1,49 +1,54 @@
 ﻿import React from "react";
-import { TextField, FormControl, FormGroup, FormControlLabel, Checkbox, Box, Typography } from "@mui/material";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const products = [
-  "T-Shirts", "Jeans", "Dresses", "Jackets", "Shoes", "Accessories", "Sportswear", "Formal Wear"
+  "T-Shirts", "Jeans", "Dresses", "Jackets", "Shoes", 
+  "Accessories", "Sportswear", "Formal Wear"
 ];
 
 const PurchaseFeedback = () => {
   return (
-    <Box>
-      <Typography variant="h6" gutterBottom>
-        Purchase Feedback
-      </Typography>
+    <div className="container-fluid">
+      <h4 className="mb-4 text-primary">Purchase Feedback</h4>
       
-      <TextField
-        fullWidth
-        label="Date of Purchase"
-        type="date"
-        margin="normal"
-        InputLabelProps={{ shrink: true }}
-      />
+      <div className="mb-3">
+        <label className="form-label">Date of Purchase</label>
+        <input 
+          type="date" 
+          className="form-control" 
+        />
+      </div>
 
-      <FormControl component="fieldset" fullWidth sx={{ mt: 2 }}>
-        <Typography variant="subtitle1" gutterBottom>
-          Products Purchased *
-        </Typography>
-        <FormGroup row>
-          {products.map((product) => (
-            <FormControlLabel
-              key={product}
-              control={<Checkbox />}
-              label={product}
-            />
+      <div className="mb-3">
+        <label className="form-label">Products Purchased <span className="text-danger">*</span></label>
+        <div className="row">
+          {products.map((product, index) => (
+            <div key={product} className="col-md-6 col-lg-4 mb-2">
+              <div className="form-check">
+                <input 
+                  className="form-check-input" 
+                  type="checkbox" 
+                  id={`product-${index}`}
+                />
+                <label className="form-check-label" htmlFor={`product-${index}`}>
+                  {product}
+                </label>
+              </div>
+            </div>
           ))}
-        </FormGroup>
-      </FormControl>
+        </div>
+      </div>
 
-      <TextField
-        fullWidth
-        label="Your Feedback"
-        multiline
-        rows={4}
-        margin="normal"
-        required
-      />
-    </Box>
+      <div className="mb-3">
+        <label className="form-label">Your Feedback <span className="text-danger">*</span></label>
+        <textarea 
+          className="form-control" 
+          rows="4" 
+          placeholder="Tell us about your experience..."
+          required
+        ></textarea>
+      </div>
+    </div>
   );
 };
 
